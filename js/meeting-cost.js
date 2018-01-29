@@ -69,6 +69,15 @@ function setDOMValues(newState) {
 }
 
 function calculateAndShowCost() {
+	if (state.people < 0) {
+		state.people = 0;
+		$("#people").val(0);
+	}
+	if (state.length < 0) {
+		state.length = 0;
+		$("#length").val(0);
+	}
+
 	var costInHours = state.people * state.length * meetingOccurences();
 	var costInMoney = costInHours * hourlyCost();
 	var shareEstimateText = '';
