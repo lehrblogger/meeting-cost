@@ -115,6 +115,14 @@ function meetingOccurences() {
 }
 
 function numberOfWorkDays() {
+	if (state.daysPTO < 0) {
+		state.daysPTO = 0;
+		$("#daysPTO").val(0);
+	}
+	if (state.daysHoliday < 0) {
+		state.daysHoliday = 0;
+		$("#daysHoliday").val(0);
+	}
 	// 260 = 52 weeks * 5 work days.
 	return 260 - state.daysPTO - state.daysHoliday;
 }
@@ -127,6 +135,10 @@ function numberOfWorkHours() {
 }
 
 function fullyLoadedCost() {
+	if (state.salary < 0) {
+		state.salary = 0;
+		$("#salary").val(0);
+	}
 	return state.salary * 1.2;
 }
 
